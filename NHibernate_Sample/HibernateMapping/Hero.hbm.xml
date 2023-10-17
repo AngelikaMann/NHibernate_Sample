@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2"
+				   assembly = "NHibernate_Sample"
+				   namespace = "NHibernate_Sample.Model">
+
+	<class name = "Hero">
+		<id name = "Id">
+			<generator class = "guid"/>
+		</id>
+		<property name = "Name"/>
+		<property name = "MP"/>
+		<property name = "HP"/>
+		<bag name = "Profession"
+				  lazy="false"
+				  inverse="true"
+				  cascade="all-delete-orphan">
+			<key column="HeroId"/>
+			<one-to-many class="Profession"/>
+		</bag>
+
+	</class>
+</hibernate-mapping>
